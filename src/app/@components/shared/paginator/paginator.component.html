@@ -1,0 +1,39 @@
+<div class="flex justify-between items-baseline flex-wrap mt-4 gap-3">
+    <div class="flex gap-4 items-center">
+        <div class="col-auto">
+          <label class="lendsqr-paginator-text">Showing</label>
+        </div>
+        <div class="lendsqr-select-wrapper">
+            <select class="lendsqr-select" [formControl]="pageSize">
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <div>
+            <p class="lendsqr-paginator-text">out of {{ pagination.totalCount | number }}</p>
+        </div>
+    </div>
+
+    <div class="lendsqr-paginator-ctrl">
+        <button type="button" class="lendsqr-paginator-ctrl-button" [ngClass]="{'btn-light': !pagination.hasPrevious}" [disabled]="!pagination.hasPrevious" (click)="paginate('previous')">
+            <img src="assets/icons/np_prev.svg" alt="">
+        </button>
+        <div class="page-numbers" id="pageNumbers">
+            <span 
+                *ngFor="let page of getPageNumbers(); let i = index" class="page-number" 
+                [ngClass]="{
+                'active': page === pagination.currentPage,
+                'lendsqr-pointer': page !== '...'
+                }" 
+                (click)="paginate(page)"
+            >
+                {{ page }}
+            </span>
+        </div>
+        <button type="button" class="lendsqr-paginator-ctrl-button" [ngClass]="{'btn-light': !pagination.hasNext}"  [disabled]="!pagination.hasNext" (click)="paginate('next')">
+            <img src="assets/icons/np_next.svg" alt="">
+        </button>
+    </div>
+</div>

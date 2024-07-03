@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+@use './app/@core/styles/abstracts/' as *;
+@use './app/@core/styles/components/' as *;
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeSpeed;
+  
+    &::-moz-selection {
+      color: var(--lendsqr-white);
+      background: var(--lendsqr-primary);
+    }
+  
+    &::selection {
+      color: var(--lendsqr-white);
+      background: var(--lendsqr-primary);
+    }
+}
+
+:root {
+    // font-size: 50%;
+    font-size: 62.5%;
+}
+
+body { 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Work Sans", sans-serif;
+}
+
+.mat-typography p {
+    margin: 0;
+}
+
+.ngx-spinner-overlay {
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
+}
+
+::-webkit-scrollbar {
+  width: 1.2rem;
+}
+
+::-webkit-scrollbar-track {
+  @include lendsqr-bg-color($lendsqr-primary, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  border: 0.3rem solid #f1f1f1;
+  @include lendsqr-bg-color($lendsqr-primary, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lendsqr-primary);
+}

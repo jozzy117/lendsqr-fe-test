@@ -1,0 +1,17 @@
+<button
+ [ngStyle]="{ 
+    'background-color': utils.getCssVariable(bgColor), 
+    'color': utils.getCssVariable(color), 
+    'border-color': utils.getCssVariable(borderColor),
+    'width': width,
+    'border-width': borderWidth,
+    'height': height,
+    'font-size': utils.getCssVariable(fontSize),
+    'font-weight': utils.getCssVariable(fontWeight),
+    'border-radius': borderRadius,
+    'padding': padding,
+    'border-style': borderStyle}"
+ (click)="submit()"
+ [disabled]="disabled"
+ [type]="type"
+>{{label}}</button>

@@ -1,0 +1,55 @@
+@use './colors' as *;
+@use './functions' as *;
+
+.lendsqr-pointer {
+    cursor: pointer;
+}
+  
+.lendsqr-text-capitalize {
+    text-transform: capitalize;
+}
+  
+.lendsqr-text-uppercase {
+    text-transform: uppercase;
+}
+
+.lendsqr-shadow {
+    box-shadow: 0.3rem 0.5rem 2rem 0rem #0000000A;
+}
+
+.lendsqr-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.2rem 1.2rem;
+    border-radius: 2rem;
+}
+
+.lendsqr-status-success {
+    color: var(--lendsqr-green);
+    @include lendsqr-bg-color($lendsqr-green, 0.1);
+}
+
+.lendsqr-border-bottom-primary {
+    border-bottom: 1px solid lendsqr-rgba($lendsqr-primary, 0.1);
+}
+
+.lendsqr-border-right-grey {
+    border-right: 1px solid lendsqr-rgba($lendsqr-grey, 0.1);
+}
+
+.lendsqr-status-error {
+    color: var(--lendsqr-error);
+    @include lendsqr-bg-color($lendsqr-error, 0.1);
+}
+
+.lendsqr-status-ghost {
+    color: var(--lendsqr-grey);
+    @include lendsqr-bg-color($lendsqr-grey, 0.1);
+}
+
+.lendsqr-status-warning {
+    color: var(--lendsqr-warning);
+    @include lendsqr-bg-color($lendsqr-warning, 0.1);
+}

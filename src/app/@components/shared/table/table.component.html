@@ -1,0 +1,138 @@
+<div class="lendsqr-shadow mt-8">
+    <div class="card-body pb-[2rem]">
+      <div class="w-full overflow-x-auto">
+        <table mat-table [dataSource]="dataSource" matSort class="table table-sm">
+          <ng-container
+            *ngFor="let column of columns; let i = index"
+            [matColumnDef]="column.key"
+          >
+            <ng-container *ngIf="column.type === 'text'">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                <span class="flex items-center gap-4">
+                  {{ column.name }}
+                  <img (click)="triggerFilterMenu()" class="lendsqr-pointer" src="assets/icons/filter-results-button.svg" alt="">
+                </span>
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let row"
+                (click)="triggerRowClick(row)"
+              >
+                {{ row[column.key] | titlecase }}
+              </td>
+            </ng-container>
+  
+            <ng-container *ngIf="column.type === 'email'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span class="flex items-center gap-4">
+                  {{ column.name }}
+                  <img (click)="triggerFilterMenu()" class="lendsqr-pointer" src="assets/icons/filter-results-button.svg" alt="">
+                </span>
+              </th>
+              <td mat-cell *matCellDef="let row" (click)="triggerRowClick(row)">
+                {{ row[column.key] | lowercase }}
+              </td>
+            </ng-container>
+  
+            <ng-container *ngIf="column.type === 'number'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span class="flex items-center gap-4">
+                  {{ column.name }}
+                  <img (click)="triggerFilterMenu()" class="lendsqr-pointer" src="assets/icons/filter-results-button.svg" alt="">
+                </span>
+              </th>
+              <td mat-cell *matCellDef="let row" (click)="triggerRowClick(row)">
+                {{ row[column.key] }}
+              </td>
+            </ng-container>
+  
+            <ng-container *ngIf="column.type === 'dateTime'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span class="flex items-center gap-4">
+                  {{ column.name }}
+                  <img (click)="triggerFilterMenu()" class="lendsqr-pointer" src="assets/icons/filter-results-button.svg" alt="">
+                </span>
+              </th>
+              <td mat-cell *matCellDef="let row" (click)="triggerRowClick(row)">
+                {{ row[column.key] | dateFormat }}
+              </td>
+            </ng-container>
+
+            <ng-container *ngIf="column.type === 'status'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <span class="flex items-center gap-4">
+                  {{ column.name }}
+                  <img (click)="triggerFilterMenu()" class="lendsqr-pointer" src="assets/icons/filter-results-button.svg" alt="">
+                </span>
+              </th>
+              <td mat-cell *matCellDef="let row" (click)="triggerRowClick(row)">
+                <span
+                  class="lendsqr-status"
+                  [ngClass]="{
+                    'lendsqr-status-ghost':
+                      row[column.key].toLowerCase() === UserStatus.INACTIVE.toLowerCase(),
+                    'lendsqr-status-success':
+                      row[column.key].toLowerCase() === UserStatus.ACTIVE.toLowerCase(),
+                    'lendsqr-status-error':
+                      row[column.key].toLowerCase() === UserStatus.BLACKLISTED.toLowerCase(),
+                    'lendsqr-status-warning':
+                      row[column.key].toLowerCase() === UserStatus.PENDING.toLowerCase()
+                  }"
+                >
+                  {{ row[column.key] ?? "Null" }}
+                </span>
+              </td>
+            </ng-container>
+  
+            <ng-container *ngIf="column.type === 'action'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                {{ column.name }}
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <button
+                  [matMenuTriggerFor]="menu"
+                  class="btn btn-sm m-1 capitalize font-normal"
+                >
+                  <img src="assets/icons/ic-more-vert.svg" alt="">
+                </button>
+                <mat-menu #menu="matMenu">
+                  <ng-container *ngFor="let action of actionButtons">
+                    <button
+                      mat-menu-item
+                      (click)="initiateAction(action.action, row)"
+                    >
+                      <span class="flex items-center gap-4">
+                        <img [style]="{ 'width': '1.4rem' }" src="{{ action.icon }}" alt="" />
+                        <span>{{ action.label }}</span>
+                      </span>
+                    </button>
+                  </ng-container>
+                </mat-menu>
+              </td>
+            </ng-container>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell text-center" colspan="12">No Records</td>
+          </tr>
+        </table>
+      </div>
+  
+      
+    </div>
+</div>
+<app-paginator
+  *ngIf="showPagination"
+  [pagination]="pagination"
+  (onPaginate)="paginate($event)"
+  (onPageSize)="pageSize($event)"
+>
+</app-paginator>
+  

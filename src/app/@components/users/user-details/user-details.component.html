@@ -1,0 +1,177 @@
+<div class="lendsqr-user-details flex flex-col gap-[2rem]">
+    <span class="flex gap-4 items-center lendsqr-pointer" (click)="goBack()">
+        <img src="assets/icons/np_back.svg" alt="" />
+        <p class="lendsqr-text-grey lendsqr-text-regular lendsqr-text-md">Back to Users</p>
+    </span>
+    <div class="flex justify-between items-center">
+        <p class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-xxl">User Details</p>
+        <span class="flex gap-6">
+            <app-button
+                *ngIf="user.status === 'active' || user.status === 'pending'"
+                [label]="'BLACKLIST USER'"
+                (buttonAction)="changeUserStatus('blacklisted')"
+            ></app-button>
+            <app-button
+                *ngIf="user.status === 'inactive' || user.status === 'blacklisted' || user.status === 'pending'"
+                [label]="'ACTIVATE USER'"
+                [color]="'--lendsqr-success'"
+                [borderColor]="'--lendsqr-success'"
+                (buttonAction)="changeUserStatus('active')"
+            ></app-button>
+        </span>
+    </div>
+    <div class="">
+        <app-user-profile-summary [user]="user" (tabChange)="tabChange($event)"></app-user-profile-summary>
+    </div>
+
+    <!-- General Details -->
+    <ng-container *ngIf="tabIndex === 0">
+        <div class="flex flex-col lendsqr-shadow lendsqr-bg-white px-[2.5rem]">
+            <!-- Personal Information Begins -->
+            <div class="lendsqr-item-container lendsqr-border-bottom-primary flex flex-col gap-6">
+                <p class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-md">Personal Information</p>
+                <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 gap-6">
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">full Name</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.name">{{user.name}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Phone Number</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.phone">{{user.phone}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Email Address</p>
+                        <p class="lendsqr-user-item-value" [matTooltip]="user.email">{{user.email}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Bvn</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.phone">{{user.phone}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Gender</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.gender">{{user.gender}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Marital status</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.maritalStatus">{{user.maritalStatus}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Children</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.children">{{user.children}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Type of residence</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.typeOfApartment">{{user.typeOfApartment}}</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Personal Information Ends -->
+    
+            <!-- Education And Employment Begins -->
+            <div class="lendsqr-item-container lendsqr-border-bottom-primary flex flex-col gap-6">
+                <p class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-md">Education and Employment</p>
+                <div class="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6">
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">level of education</p>
+                        <p class="lendsqr-user-item-value" [matTooltip]="user.educationLevel">{{user.educationLevel}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">employment status</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.emplomentStatus">{{user.emplomentStatus}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">sector of employment</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.sector">{{user.sector}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Duration of employment</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.employmentDuration">{{user.employmentDuration}} years</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">office email</p>
+                        <p class="lendsqr-user-item-value" [matTooltip]="user.officeEmail">{{user.officeEmail}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Monthly income</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.monthlyIncome">{{user.monthlyIncome}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">loan repayment</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.loanRepayment">{{user.loanRepayment}}</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Education And Employment Ends -->
+    
+            <!-- Socials Begins -->
+            <div class="lendsqr-item-container lendsqr-border-bottom-primary flex flex-col gap-6">
+                <p class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-md">Socials</p>
+                <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 gap-6">
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Twitter</p>
+                        <p class="lendsqr-user-item-value" [matTooltip]="user.socialHandle">{{user.socialHandle}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Facebook</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="user.name">{{user.name}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Instagram</p>
+                        <p class="lendsqr-user-item-value" [matTooltip]="user.socialHandle">{{user.socialHandle}}</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Socials Ends -->
+    
+            <!-- Guarantor Begins -->
+            <div *ngFor="let guarantor of user.guarantor; index as i" class="lendsqr-item-container lendsqr-border-bottom-primary flex flex-col gap-6">
+                <p *ngIf="i === 0" class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-md">Guarantor</p>
+                <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 gap-6">
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">full Name</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="guarantor.name">{{guarantor.name}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Phone Number</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="guarantor.phone">{{guarantor.phone}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Email Address</p>
+                        <p class="lendsqr-user-item-value" [matTooltip]="guarantor.email">{{guarantor.email}}</p>
+                    </span>
+                    <span class="flex flex-col gap-2">
+                        <p class="lendsqr-user-item-label">Relationship</p>
+                        <p class="lendsqr-user-item-value lendsqr-text-capitalize" [matTooltip]="guarantor.relationship">{{guarantor.relationship}}</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Guarantor Ends -->
+        </div>
+    </ng-container>
+
+    <!-- Documents -->
+    <ng-container *ngIf="tabIndex === 1">
+        <p>Coming Soon</p>
+    </ng-container>
+
+    <!-- Bank Details -->
+    <ng-container *ngIf="tabIndex === 2">
+        <p>Coming Soon</p>
+    </ng-container>
+
+    <!-- Loans -->
+    <ng-container *ngIf="tabIndex === 3">
+        <p>Coming Soon</p>
+    </ng-container>
+
+    <!-- Savings -->
+    <ng-container *ngIf="tabIndex === 4">
+        <p>Coming Soon</p>
+    </ng-container>
+
+    <!-- App & System -->
+    <ng-container *ngIf="tabIndex === 5">
+        <p>Coming Soon</p>
+    </ng-container>
+
+</div>

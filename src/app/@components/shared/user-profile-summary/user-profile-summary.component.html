@@ -1,0 +1,40 @@
+<div class="user-details lendsqr-shadow lendsqr-bg-white">
+    <div class="container">
+      <div class="profile-details-container">
+        <div class="avatar lendsqr-bg-primary-light">
+          <img src="assets/images/user.svg" alt="" />
+        </div>
+        <div class="profile-details-text">
+          <div class="details-text-box">
+            <h3>{{user.name}}</h3>
+            <p>{{user._id}}</p>
+          </div>
+          <div class="details-text-box">
+            <h5>User’s Tier</h5>
+            <div class="flex">
+              <img src="assets/images/star-filled.svg" alt="" />
+              <img src="assets/images/star-outlined.svg" alt="" />
+              <img src="assets/images/star-outlined.svg" alt="" />
+            </div>
+          </div>
+          <div class="details-text-box">
+            <h3>{{user.balance}}</h3>
+            <p>9912345678/Providus Bank</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ul class="user-tabs">
+          <li
+            *ngFor="let tab of tabs; index as i"
+            class="tab"
+            [ngClass]="{ active: activeId === i }"
+            (click)="tabClicked(i)"
+          >
+            <span>{{ tab }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+  

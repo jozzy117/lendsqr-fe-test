@@ -1,0 +1,21 @@
+<div class="lendsqr-users flex flex-col gap-[3rem]">
+    <p class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-xxl">Users</p>
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6">
+        <app-dashboard-summary
+            *ngFor="let summary of dashboardSummaryData"
+            [total]="summary.total"
+            [title]="summary.title"
+            [icon]="summary.icon"
+        ></app-dashboard-summary>
+    </div>
+    <app-table
+      [columns]="columns"
+      [data]="payload"
+      [actionButtons]="actionButtons"
+      [pagination]="pagination"
+      (filterEmit)="filterData($event)"
+      (onPageSize)="filterPageSize($event)"
+      (onPaginate)="paginate($event)"
+      (onactionTrigger)="performAction($event)"
+    ></app-table>
+</div>

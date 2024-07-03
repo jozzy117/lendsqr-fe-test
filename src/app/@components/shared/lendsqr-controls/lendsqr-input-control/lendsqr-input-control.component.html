@@ -1,0 +1,49 @@
+<ng-container *ngIf="type === LENDSQR_CONTROLS.TEXT">
+  <div class="flex flex-col">
+    <label>{{label}}</label>
+    <input
+      class="lendsqr-input"
+      [placeholder]="placeholder"
+      [formControl]="control"
+      type="text"
+      *ngIf="isFormControl(control)" 
+    />
+  </div>
+</ng-container>
+<ng-container *ngIf="type === LENDSQR_CONTROLS.EMAIL">
+  <div class="flex flex-col">
+    <label>{{label}}</label>
+    <input
+      class="lendsqr-input"
+      [placeholder]="placeholder"
+      type="email"
+      [formControl]="control"
+      *ngIf="isFormControl(control)" 
+    />
+  </div>
+</ng-container>
+<ng-container *ngIf="type === LENDSQR_CONTROLS.NUMBER">
+  <div class="flex flex-col">
+    <label>{{label}}</label>
+    <input
+      class="lendsqr-input"
+      [placeholder]="placeholder"
+      type="number"
+      [formControl]="control"
+      *ngIf="isFormControl(control)" 
+    />
+  </div>
+</ng-container>
+<ng-container *ngIf="type === LENDSQR_CONTROLS.DATE">
+  <div class="flex flex-col">
+    <label>{{label}}</label>
+    <input
+      class="lendsqr-input"
+      [placeholder]="placeholder"
+      type="date"
+      [formControl]="control"
+      *ngIf="isFormControl(control)" 
+    />
+  </div>
+</ng-container>
+  

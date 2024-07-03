@@ -1,0 +1,8 @@
+<ng-container *ngIf="type === LENDSQR_CONTROLS.SELECT">
+    <div class="flex flex-col lendsqr-select-wrapper">
+      <label>{{label}}</label>
+      <select class="" [formControl]="control" *ngIf="isFormControl(control)">
+        <option *ngFor="let option of options" [value]="option">{{option}}</option>
+      </select>
+    </div>
+</ng-container>

@@ -1,0 +1,77 @@
+@use '../../../@core/styles/abstracts/colors' as *;
+@use '../../../@core/styles/abstracts/functions' as *;
+
+.lendsqr-paginator-text {
+    color: var(--lendsqr-grey);
+    font-size: var(--lendsqr-regular);
+}
+
+.lendsqr-select-wrapper {
+    position: relative;
+    width: 8rem;
+    // height: 3rem;
+
+    .lendsqr-select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: lendsqr-rgba($lendsqr-grey, 0.1);
+        border: 1px solid lendsqr-rgba($lendsqr-grey, 0.1);
+        padding: 1rem;
+        padding-right: 3rem;
+        font-size: var(--lendsqr-sm);
+        font-weight: var(--lendsqr-medium);
+        color: var(--lendsqr-primary);
+        width: 100%;
+        cursor: pointer;
+        border-radius: 0.4rem;
+
+        &:focus, &:focus-visible {
+            border-color: var(--lendsqr-primary);
+            outline: none;
+        }
+    }
+
+    &::after {
+        content: url('/assets/icons/np_dropdown_arrow.svg');
+        position: absolute;
+        top: 32%;
+        right: 15%;
+        width: var(--lendsqr-sm);
+        height: var(--lendsqr-sm);
+        pointer-events: none;
+    }
+}
+
+.lendsqr-paginator-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .lendsqr-paginator-ctrl-button {
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 0.4rem;
+        background-color: lendsqr-rgba($lendsqr-grey, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 1.4rem;
+            height: 1.4rem;
+        }
+    }
+
+    .page-numbers {
+        display: flex;
+        gap: 1.5rem;
+        color: var(--lendsqr-grey);
+        font-size: var(--lendsqr-md);
+        font-weight: var(--lendsqr-regular);
+
+        .active {
+            font-weight: var(--lendsqr-medium);
+        }
+    }
+}

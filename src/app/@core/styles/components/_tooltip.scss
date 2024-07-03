@@ -1,0 +1,32 @@
+.lendsqr-ellipsis-tooltip {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.lendsqr-ellipsis-tooltip::after {
+    content: attr(data-fulltext);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.lendsqr-ellipsis-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}

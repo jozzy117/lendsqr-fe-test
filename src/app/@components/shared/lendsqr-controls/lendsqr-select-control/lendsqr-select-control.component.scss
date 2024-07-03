@@ -1,0 +1,42 @@
+@use '../../../../@core/styles/abstracts/colors' as *;
+@use '../../../../@core/styles/abstracts/functions' as *;
+
+.lendsqr-select-wrapper {
+    position: relative;
+    width: 100%;
+
+    label {
+        color: var(--lendsqr-grey);
+        font-weight: var(--lendsqr-medium);
+        font-size: var(--lendsqr-sm);
+    }
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 4rem;
+        border-radius: 0.8rem;
+        border: 1px solid lendsqr-rgba($lendsqr-primary, 0.2);
+        padding: 0 1.6rem;
+        color: var(--lendsqr-grey);
+        font-size: var(--lendsqr-sm);
+        font-weight: var(--lendsqr-regular);
+    
+        &:focus, &:focus-visible {
+            border-color: var(--lendsqr-primary);
+            outline: none;
+        }
+    }
+
+    &::after {
+        content: url('/assets/icons/np_dropdown_arrow.svg');
+        position: absolute;
+        top: 55%;
+        right: 8%;
+        width: var(--lendsqr-sm);
+        height: var(--lendsqr-sm);
+        pointer-events: none;
+    }
+}
+

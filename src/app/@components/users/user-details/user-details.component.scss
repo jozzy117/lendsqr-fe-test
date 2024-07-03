@@ -1,0 +1,21 @@
+.lendsqr-user-details {
+    .lendsqr-item-container {
+        padding: 2.5rem 0;
+
+        .lendsqr-user-item-label {
+            color: var(--lendsqr-grey);
+            font-weight: var(--lendsqr-regular);
+            font-size: var(--lendsqr-xs);
+            text-transform: uppercase;
+        }
+    
+        .lendsqr-user-item-value {
+            color: var(--lendsqr-grey);
+            font-weight: var(--lendsqr-medium);
+            font-size: var(--lendsqr-md);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

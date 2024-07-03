@@ -1,0 +1,29 @@
+@use '../../../@core/styles/abstracts/colors' as *;
+
+.table th {
+    color: var(--lendsqr-grey);
+    font-weight: var(--lendsqr-semi-bold);
+    font-size: var(--lendsqr-xs);
+}
+
+.mat-mdc-cell {
+    color: var(--lendsqr-grey);
+    font-weight: var(--lendsqr-regular);
+    font-size: var(--lendsqr-sm);
+}
+
+.mdc-data-table__cell:last-child, .mdc-data-table__header-cell {
+    border-bottom-width: 0px;
+}
+
+::ng-deep.mdc-list-item__primary-text {
+    font-family: "Work Sans", sans-serif !important;
+    color: var(--lendsqr-primary) !important;
+    font-size: var(--lendsqr-sm) !important;
+    padding: 0 2rem;
+}
+
+::ng-deep.mat-mdc-menu-item:hover:not([disabled]) {
+    @include lendsqr-bg-color($lendsqr-success, 0.1);
+}
+  

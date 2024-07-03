@@ -1,0 +1,67 @@
+<form class="lendsqr-filter-container" [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <app-lendsqr-select-control
+        [label]="'Organization'"
+        [type]="LENDSQR_CONTROLS.SELECT"
+        [control]="filterForm.get('organization')"
+        [options]="organizations"
+    ></app-lendsqr-select-control>
+
+    <app-lendsqr-input-control
+        [label]="'Username'"
+        [type]="LENDSQR_CONTROLS.TEXT"
+        placeholder="Enter text"
+        [control]="filterForm.get('username')"
+    ></app-lendsqr-input-control>
+        
+    <app-lendsqr-input-control
+        [label]="'Email'"
+        [type]="LENDSQR_CONTROLS.EMAIL"
+        placeholder="Enter email"
+        [control]="filterForm.get('email')"
+    ></app-lendsqr-input-control>
+
+    <app-lendsqr-input-control
+        [label]="'Date'"
+        [type]="LENDSQR_CONTROLS.DATE"
+        placeholder="Enter date"
+        [control]="filterForm.get('date')"
+    ></app-lendsqr-input-control>
+        
+    <app-lendsqr-input-control
+        [label]="'Phone Number'"
+        [type]="LENDSQR_CONTROLS.NUMBER"
+        placeholder="Enter number"
+        [control]="filterForm.get('phoneNumber')"
+    ></app-lendsqr-input-control>
+
+    <app-lendsqr-select-control
+        [label]="'Status'"
+        [type]="LENDSQR_CONTROLS.SELECT"
+        [control]="filterForm.get('status')"
+        [options]="status"
+    ></app-lendsqr-select-control>
+    
+    <div class="flex gap-4">
+        <app-button 
+            [label]="'Reset'" 
+            (buttonAction)="onReset()"
+            [borderColor]="'--lendsqr-grey'"
+            [bgColor]="'--lendsqr-white'"
+            [color]="'--lendsqr-grey'"
+            [width]="'9.8rem'"
+            [height]="'4rem'"
+            [type]="'button'"
+        ></app-button>
+        <app-button 
+            [label]="'Filter'" 
+            [borderColor]="'--lendsqr-success'"
+            [bgColor]="'--lendsqr-success'"
+            [color]="'--lendsqr-white'"
+            [disabled]="!hasAnyValue()"
+            [width]="'9.8rem'"
+            [height]="'4rem'"
+            [type]="'submit'"
+        ></app-button>
+    </div>
+</form>
+  

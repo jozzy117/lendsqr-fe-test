@@ -2,6 +2,53 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
 
+## Table of Contents
+
+- [Project Title](#Lendsqr)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [Development](#development-server)
+- [Code-Scaffolding](#code-scaffolding)
+- [Build](#build)
+- [Running unit tests](#running-unit-tests)
+- [Running end-to-end tests](#running-end-to-end-tests)
+- [Further help](#further-help)
+
+## Installation
+
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Install dependencies using npm or yarn:
+
+   ```bash
+   npm install or yarn install
+
+## Usage
+
+1. Start the application with:
+
+   ```bash
+   npm start or ng serve
+
+   This will launch the application at http://localhost:4200 by default.
+
+## Features
+
+- Typescript: This application's code is strongly typed using typescript and stylelint.
+- Reusable Components: This application uses a lot of reusable component and lazy loading to improve application performance.
+- SCSS Variables: This application used scss variables for cleaner styling and easy maintainability
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Create a new Pull Request.
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

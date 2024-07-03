@@ -18,10 +18,10 @@
   
         <div class="inputs-container">
           <div class="input-wrapper">
-            <input id="email" placeholder="Email" type="text" />
+            <input id="email" name="email" [(ngModel)]="email" placeholder="Email" type="text" />
           </div>
           <div class="input-wrapper input-wrapper__password">
-            <input id="password" placeholder="Password" type="text" />
+            <input id="password" name="password" [(ngModel)]="password" placeholder="Password" type="text" />
             <span class="show-password">SHOW</span>
           </div>
   

@@ -1,9 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ErrorInterceptor } from './error.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ErrorInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
+    imports: [ToastrModule.forRoot()],
     providers: [
       ErrorInterceptor
       ]

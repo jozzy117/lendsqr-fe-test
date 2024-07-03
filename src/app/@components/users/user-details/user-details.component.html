@@ -7,12 +7,12 @@
         <p class="lendsqr-text-primary lendsqr-text-medium lendsqr-text-xxl">User Details</p>
         <span class="flex gap-6">
             <app-button
-                *ngIf="user.status === 'active' || user.status === 'pending'"
+                *ngIf="user && (user.status === 'active' || user.status === 'pending')"
                 [label]="'BLACKLIST USER'"
                 (buttonAction)="changeUserStatus('blacklisted')"
             ></app-button>
             <app-button
-                *ngIf="user.status === 'inactive' || user.status === 'blacklisted' || user.status === 'pending'"
+                *ngIf="user && (user.status === 'inactive' || user.status === 'blacklisted' || user.status === 'pending')"
                 [label]="'ACTIVATE USER'"
                 [color]="'--lendsqr-success'"
                 [borderColor]="'--lendsqr-success'"

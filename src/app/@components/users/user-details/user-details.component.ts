@@ -30,8 +30,12 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.user = this.usersService.getUserById(this.selectedUserId);
-    console.log(this.user);
+    const user = this.usersService.getUserById(this.selectedUserId);
+    if (user) {
+      this.user = user;
+    } else {
+      this.toastr.error('User not found');
+    }
   }
 
   updateUserRecord(userId: string, updatedUserData: any): void {

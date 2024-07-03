@@ -11,12 +11,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LayoutModule } from './@core/layout/layout.module';
-import { EllipsisTooltipDirective } from './@directives/ellipsis-tooltip.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EllipsisTooltipDirective,
   ],
   imports: [
     BrowserModule,

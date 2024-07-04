@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   private readonly isLoggedInKey = 'isLoggedIn';
+
+  constructor(private router: Router) { }
 
   login(email: string, password: string): boolean {
     const validEmail = 'test@lendsqr.com';
@@ -21,6 +24,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.isLoggedInKey);
+    this.router.navigate(['/auth/login']);
   }
 
   isAuthenticated(): boolean {

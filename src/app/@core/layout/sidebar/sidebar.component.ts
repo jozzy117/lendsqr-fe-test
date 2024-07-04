@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LayoutService } from '../../services/layout.service';
+import { AuthService } from 'src/app/@auth/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -104,7 +105,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     ],
   }
 
-  constructor(private layoutService: LayoutService) { }
+  constructor(private layoutService: LayoutService, private authService : AuthService) { }
 
   ngOnInit() {
     this.subscriptions.add(
@@ -124,6 +125,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

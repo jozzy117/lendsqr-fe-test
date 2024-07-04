@@ -9,6 +9,7 @@
         ></app-dashboard-summary>
     </div>
     <app-table
+      *ngIf="isDesktop$ | async"
       [columns]="columns"
       [data]="payload"
       [actionButtons]="actionButtons"
@@ -18,4 +19,13 @@
       (onPaginate)="paginate($event)"
       (onactionTrigger)="performAction($event)"
     ></app-table>
+    <app-mobile-table 
+        *ngIf="!(isDesktop$ | async)"
+        [data]="payload" 
+        [pagination]="pagination" 
+        [actionButtons]="actionButtons" 
+        (onPageSize)="filterPageSize($event)"
+        (onPaginate)="paginate($event)" 
+        (onactionTrigger)="performAction($event)"
+    ></app-mobile-table>
 </div>

@@ -5,7 +5,7 @@
   
     <div class="lendsqr-body-container">
       <aside class="sidebar">
-        <app-sidebar></app-sidebar>
+        <app-sidebar [mobile]="!(isDesktop$ | async)"></app-sidebar>
       </aside>
   
       <main class="main">

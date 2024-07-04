@@ -37,6 +37,10 @@
     display: flex;
     align-items: center;
 
+    .logo-mobile {
+      display: none;
+    }
+
     .form-container {
       margin-left: 10rem;
 

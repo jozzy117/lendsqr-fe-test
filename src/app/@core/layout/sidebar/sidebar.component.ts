@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription = new Subscription();
+  @Input() mobile: boolean | null = false;
+  sidenavOpen: boolean = false;
   activeId: string = 'customers0';
 
   linksObj: { [key: string]: { [key: string]: string }[] } = {
@@ -99,7 +104,26 @@ export class SidebarComponent {
     ],
   }
 
+  constructor(private layoutService: LayoutService) { }
+
+  ngOnInit() {
+    this.subscriptions.add(
+      this.layoutService.sidenavState$.subscribe(state => {
+        this.sidenavOpen = state;
+      })
+    );
+  }
+
   linkClicked(i: number, section: string) {
     this.activeId = section + i;
   }
+
+  toggleSidenav() {
+    this.layoutService.toggleMbSidenav();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
+
 }

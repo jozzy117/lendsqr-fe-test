@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,10 @@ export class LoginComponent {
   public password: string = '';
   public emailError: string | null = null;
   public passwordError: string | null = null;
+  public loginError: string | null = null;
+  public passwordVisible: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService,) { }
 
   validateEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +25,7 @@ export class LoginComponent {
   login() {
     this.emailError = null;
     this.passwordError = null;
+    this.loginError = null;
 
     if (!this.email) {
       this.emailError = 'Email is required';
@@ -34,9 +38,17 @@ export class LoginComponent {
     }
 
     if (!this.emailError && !this.passwordError) {
-      // Perform the login logic, e.g., call an authentication service
-      // For now, we simply navigate to the dashboard
-      this.router.navigate(['/lendsqr/dashboard']);
+      const isAuthenticated = this.authService.login(this.email, this.password);
+
+      if (isAuthenticated) {
+        this.router.navigate(['/lendsqr/users']);
+      } else {
+        this.loginError = 'Invalid email or password. Please try again.';
+      }
     }
+  }
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
   }
 }

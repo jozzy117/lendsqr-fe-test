@@ -7,6 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [Project Title](#Lendsqr)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Login Credentials](#authentication)
 - [Features](#features)
 - [Contributing](#contributing)
 - [Development](#development-server)
@@ -33,6 +34,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    npm start or ng serve
 
    This will launch the application at http://localhost:4200 by default.
+
+## Authentication
+
+   After launching the application, you will be routed to a login page for authentication. Use below credentials for access:
+
+   Email = 'test@lendsqr.com';
+   Password = 'password123';
 
 ## Features
 

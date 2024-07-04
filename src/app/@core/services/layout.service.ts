@@ -9,7 +9,7 @@ export class LayoutService {
   private _mbSidenavStateSubject = new BehaviorSubject<boolean>(false);
   sidenavState$ = this._mbSidenavStateSubject.asObservable();
 
-  isDesktop$ = this.breakpointObserver.observe(`(min-width: 1280px)`).pipe(
+  isDesktop$ = this.breakpointObserver.observe(`(min-width: 992px)`).pipe(
     map(state => state.matches)
   );
   isMobile$ = this.breakpointObserver.observe(`(max-width: 480px)`).pipe(

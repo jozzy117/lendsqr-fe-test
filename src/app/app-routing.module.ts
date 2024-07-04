@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './@auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'lendsqr',
-    loadChildren: () => import('./@components/lendsqr.module').then(m => m.LendsqrModule)
+    loadChildren: () => import('./@components/lendsqr.module').then(m => m.LendsqrModule),
+    canActivateChild: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: 'auth',
+    pathMatch: 'full',
   }
 ];
 

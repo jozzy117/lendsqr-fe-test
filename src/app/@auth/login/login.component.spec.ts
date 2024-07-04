@@ -4,18 +4,24 @@ import { LoginComponent } from './login.component';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { AuthService } from '../services/auth.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
   let routerSpy = { navigate: jasmine.createSpy('navigate') };
 
   beforeEach(async () => {
-    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    const authSpy = jasmine.createSpyObj('AuthService', ['login']);
+    const routerSpyObj = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      providers: [{ provide: Router, useValue: routerSpy }],
+      providers: [
+        { provide: AuthService, useValue: authSpy },
+        { provide: Router, useValue: routerSpyObj },
+      ],
       imports: [ FormsModule ]
     })
     .compileComponents();
@@ -24,6 +30,10 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+    routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+    authServiceSpy.login.and.returnValue(true);
+
     fixture.detectChanges();
   });
 
@@ -31,13 +41,13 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should not navigate to dashboard if email or password is empty', () => {
+  it('should not navigate to users if email or password is empty', () => {
     component.login();
 
     expect(routerSpy.navigate).not.toHaveBeenCalled();
   });
 
-  it('should not navigate to dashboard if email format is invalid', () => {
+  it('should not navigate to users if email format is invalid', () => {
     component.email = 'invalid-email';
     component.password = 'password';
     component.login();
@@ -45,11 +55,11 @@ describe('LoginComponent', () => {
     expect(routerSpy.navigate).not.toHaveBeenCalled();
   });
 
-  it('should navigate to dashboard if email and password are valid', () => {
+  it('should navigate to users if email and password are valid', () => {
     component.email = 'valid@example.com';
     component.password = 'validPassword';
     component.login();
 
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/lendsqr/dashboard']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/lendsqr/users']);
   });
 });

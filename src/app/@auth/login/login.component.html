@@ -1,35 +1,39 @@
 <section class="login-page">
-    <div class="login-hero">
-      <div class="hero-container">
-        <div class="logo">
-          <img src="assets/images/logo.svg" alt="" />
-        </div>
-        <div class="hero-image">
-          <img src="assets/images/hero.svg" alt="" />
-        </div>
+  <div class="login-hero">
+    <div class="hero-container">
+      <div class="logo">
+        <img src="assets/images/logo.svg" alt="" />
+      </div>
+      <div class="hero-image">
+        <img src="assets/images/hero.svg" alt="" />
       </div>
     </div>
-    <div class="login-form">
-      <div class="form-container">
-        <div class="login-heading">
-          <h2 class="login-title">Welcome!</h2>
-          <p class="login-subtitle">Enter details to login.</p>
-        </div>
-  
-        <div class="inputs-container">
-          <div class="input-wrapper">
-            <input id="email" name="email" [(ngModel)]="email" placeholder="Email" type="text" />
-          </div>
-          <div class="input-wrapper input-wrapper__password">
-            <input id="password" name="password" [(ngModel)]="password" placeholder="Password" type="text" />
-            <span class="show-password">SHOW</span>
-          </div>
-  
-          <a class="forgot-password" href="#">Forgot PASSWORD?</a>
-        </div>
-  
-        <button (click)="login()" class="login-btn">LOG IN</button>
+  </div>
+  <div class="login-form">
+    <div class="form-container">
+      <div class="login-heading">
+        <h2 class="login-title">Welcome!</h2>
+        <p class="login-subtitle">Enter details to login.</p>
       </div>
+
+      <div class="inputs-container">
+        <div class="input-wrapper">
+          <input id="email" name="email" [(ngModel)]="email" placeholder="Email" type="text" />
+        </div>
+        <div *ngIf="emailError" class="lendsqr-text-error">{{ emailError }}</div>
+        <div class="input-wrapper input-wrapper__password">
+          <input id="password" name="password" [(ngModel)]="password" placeholder="Password" [type]="passwordVisible ? 'text' : 'password'" />
+          <span class="show-password lendsqr-pointer" (click)="togglePasswordVisibility()">
+            {{ passwordVisible ? 'HIDE' : 'SHOW' }}
+          </span>
+        </div>
+        <div *ngIf="passwordError" class="lendsqr-text-error">{{ passwordError }}</div>
+
+        <a class="forgot-password" href="#">Forgot PASSWORD?</a>
+      </div>
+
+      <button (click)="login()" class="login-btn">LOG IN</button>
+      <div *ngIf="loginError" class="lendsqr-text-error">{{ loginError }}</div>
     </div>
+  </div>
 </section>
-  

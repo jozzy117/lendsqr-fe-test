@@ -1,60 +1,79 @@
-<div class="sidebar-wrapper">
-    <div class="switch-organization">
-      <img src="assets/images/organization.svg" alt="" />
-      <span class="switch-dropdown">
-        Switch Organization
-        <img src="assets/images/chevron-down.svg" alt="" />
-      </span>
-    </div>
+<div [ngClass]="mobile ? 'slide-bar' : 'sidebar-wrapper'">
+    <div [class.show]="sidenavOpen">
+      <button *ngIf="mobile" class="close-btn" (click)="toggleSidenav()">x</button>
+      <div *ngIf="mobile" class="profile-actions mt-[4rem]">
+        <div class="avatar">
+          <img src="assets/images/avatar.svg" alt="avatar" />
+        </div>
   
-    <div class="dashboard"
-      (click)="linkClicked(0, 'dashboard')"
-      [ngClass]="{ active: 'dashboard' + 0 === activeId }"
-    >
-      <img src="assets/images/dashboard.svg" alt="" />
-      <span> Dashboard </span>
-    </div>
-    <div class="customers">
-      <h3>CUSTOMERS</h3>
-      <ul class="links-container">
-        <li
-          (click)="linkClicked(i, 'customers')"
-          class="link"
-          [ngClass]="{ active: 'customers' + i === activeId }"
-          *ngFor="let link of linksObj['customers']; index as i"
-        >
-          <img src="{{ link['img'] }}" alt="" />
-          <span>{{ link["link"] }} </span>
-        </li>
-      </ul>
-    </div>
-    <div class="businesses">
-      <h3>BUSINESSES</h3>
-      <ul class="links-container">
-        <li
-          (click)="linkClicked(i, 'businesses')"
-          class="link"
-          *ngFor="let link of linksObj['businesses']; index as i"
-          [ngClass]="{ active: 'businesses' + i === activeId }"
-        >
-          <img src="{{ link['img'] }}" alt="" />
-          <span>{{ link["link"] }} </span>
-        </li>
-      </ul>
-    </div>
-    <div class="settings">
-      <h3>SETTINGS</h3>
-      <ul class="links-container">
-        <li
-          (click)="linkClicked(i, 'settings')"
-          class="link"
-          [ngClass]="{ active: 'settings' + i === activeId }"
-          *ngFor="let link of linksObj['settings']; index as i"
-        >
-          <img src="{{ link['img'] }}" alt="" />
-          <span>{{ link["link"] }} </span>
-        </li>
-      </ul>
+        <div class="profile-dropdown">
+          <p class="profile-name">Adedeji</p>
+          <img src="assets/images/down-arrow.svg" alt="" />
+        </div>
+      </div>
+      <div class="switch-organization">
+        <img src="assets/images/organization.svg" alt="" />
+        <span class="switch-dropdown">
+          Switch Organization
+          <img src="assets/images/chevron-down.svg" alt="" />
+        </span>
+      </div>
+    
+      <div class="dashboard"
+        (click)="linkClicked(0, 'dashboard')"
+        [ngClass]="{ active: 'dashboard' + 0 === activeId }"
+      >
+        <img src="assets/images/dashboard.svg" alt="" />
+        <span> Dashboard </span>
+      </div>
+      <div class="customers">
+        <h3>CUSTOMERS</h3>
+        <ul class="links-container">
+          <li
+            (click)="linkClicked(i, 'customers')"
+            class="link"
+            [ngClass]="{ active: 'customers' + i === activeId }"
+            *ngFor="let link of linksObj['customers']; index as i"
+          >
+            <img src="{{ link['img'] }}" alt="" />
+            <span>{{ link["link"] }} </span>
+          </li>
+        </ul>
+      </div>
+      <div class="businesses">
+        <h3>BUSINESSES</h3>
+        <ul class="links-container">
+          <li
+            (click)="linkClicked(i, 'businesses')"
+            class="link"
+            *ngFor="let link of linksObj['businesses']; index as i"
+            [ngClass]="{ active: 'businesses' + i === activeId }"
+          >
+            <img src="{{ link['img'] }}" alt="" />
+            <span>{{ link["link"] }} </span>
+          </li>
+        </ul>
+      </div>
+      <div class="settings">
+        <h3>SETTINGS</h3>
+        <ul class="links-container">
+          <li
+            (click)="linkClicked(i, 'settings')"
+            class="link"
+            [ngClass]="{ active: 'settings' + i === activeId }"
+            *ngFor="let link of linksObj['settings']; index as i"
+          >
+            <img src="{{ link['img'] }}" alt="" />
+            <span>{{ link["link"] }} </span>
+          </li>
+        </ul>
+      </div>
+      <div class="logout"
+        (click)="logout()"
+      >
+        <img src="assets/images/Logout.svg" alt="" />
+        <span> Logout </span>
+      </div>
     </div>
 </div>
   

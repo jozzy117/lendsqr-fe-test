@@ -15,6 +15,7 @@ import { DateFormatPipe } from 'src/app/@core/pipes/date-format.pipe';
 import { UserProfileSummaryComponent } from './user-profile-summary/user-profile-summary.component';
 import { FilterFormComponent } from './filter-form/filter-form.component';
 import { LendsqrControlsModule } from './lendsqr-controls/lendsqr-controls.module';
+import { MobileTableComponent } from './mobile-table/mobile-table.component';
 
 const MATMODULE = [
   MatTableModule,
@@ -31,7 +32,8 @@ const MATMODULE = [
     ButtonComponent,
     DateFormatPipe,
     UserProfileSummaryComponent,
-    FilterFormComponent
+    FilterFormComponent,
+    MobileTableComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ const MATMODULE = [
     ButtonComponent,
     UserProfileSummaryComponent,
     FilterFormComponent,
+    MobileTableComponent,
     ...MATMODULE
   ]
 })

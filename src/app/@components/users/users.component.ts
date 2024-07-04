@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { IApiResponse } from 'src/app/@core/interfaces/api-response';
 import { IActionButton } from 'src/app/@core/interfaces/button';
 import { IDashboardSummary } from 'src/app/@core/interfaces/dashboard-summary';
 import { IPageRequest, IPagination, ITableColumn } from 'src/app/@core/interfaces/table';
+import { LayoutService } from 'src/app/@core/services/layout.service';
 import { UsersService } from 'src/app/@core/services/users.service';
 import { ButtonActionTypes, PageType } from 'src/app/@core/types/table.types';
 
@@ -15,6 +17,7 @@ import { ButtonActionTypes, PageType } from 'src/app/@core/types/table.types';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  isDesktop$: Observable<boolean> = this.layoutService.isDesktop$;
   public payload: any[] = [];
   public users: any[] = [];
   public pagination: IPagination = {
@@ -111,7 +114,8 @@ export class UsersComponent implements OnInit {
     private usersService: UsersService, 
     private spinner: NgxSpinnerService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private layoutService: LayoutService
   ) {}
 
   ngOnInit(): void {

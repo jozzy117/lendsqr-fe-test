@@ -1,0 +1,50 @@
+<div class="mobile-table">
+    <div class="flex flex-col p-[2rem] lendsqr-shadow" *ngFor="let user of data">
+        <div class="grid grid-cols-2 gap-2 lendsqr-border-bottom-primary pb-3">
+            <span class="flex flex-col">
+                <p class="lendsqr-text-sm lendsqr-text-grey lendsqr-text-medium">Username</p>
+                <p class="lendsqr-text-xs lendsqr-text-grey">{{ user.name }}</p>
+            </span>
+            <span class="flex flex-col text-right">
+                <p class="lendsqr-text-sm lendsqr-text-grey lendsqr-text-medium">organization</p>
+                <p class="lendsqr-text-xs lendsqr-text-grey">{{ user.company }}</p>
+            </span>
+            <span class="flex flex-col">
+                <p class="lendsqr-text-sm lendsqr-text-grey lendsqr-text-medium">Date joined</p>
+                <p class="lendsqr-text-xs lendsqr-text-grey">{{ user.registered | dateFormat }}</p>
+            </span>
+            <span class="flex flex-col text-right">
+                <p class="lendsqr-text-sm lendsqr-text-grey lendsqr-text-medium">Status</p>
+                <p class="lendsqr-text-xs lendsqr-text-grey">{{ user.status }}</p>
+            </span>
+        </div>
+        <div class="flex justify-end">
+            <button
+                [matMenuTriggerFor]="menu"
+                class="btn btn-sm m-1 capitalize font-normal"
+            >
+                <img src="assets/icons/ic-more-vert.svg" alt="">
+            </button>
+            <mat-menu #menu="matMenu">
+                <ng-container *ngFor="let action of actionButtons">
+                <button
+                    mat-menu-item
+                    (click)="initiateAction(action.action, user)"
+                >
+                    <span class="flex items-center gap-4">
+                    <img [style]="{ 'width': '1.4rem' }" src="{{ action.icon }}" alt="" />
+                    <span>{{ action.label }}</span>
+                    </span>
+                </button>
+                </ng-container>
+            </mat-menu>
+        </div>
+    </div>
+    <app-paginator
+        *ngIf="showPagination"
+        [pagination]="pagination"
+        (onPaginate)="paginate($event)"
+        (onPageSize)="pageSize($event)"
+    >
+    </app-paginator>
+</div>

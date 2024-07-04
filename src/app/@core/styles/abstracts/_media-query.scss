@@ -1,0 +1,108 @@
+/* Mobile Phones Screens */
+@media (max-width: 991.98px) {
+
+    // login styles
+
+    .login-hero {
+        display: none !important;
+    }
+    .login-form {
+        width: 100% !important;
+        padding: 15rem 3rem !important;
+        flex-direction: column !important;
+        align-items: self-start !important;
+        justify-content: center !important;
+
+        .logo-mobile {
+            display: flex !important;
+        }
+
+        .form-container {
+            margin: 0 !important;
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+            justify-content: center !important;
+
+            .input-wrapper {
+                width: 100% !important;
+            }
+        }
+    }
+
+    // navbar styles
+
+    .navbar {
+        padding: 3rem 2.5rem !important;
+
+        .left-container {
+            width: 100% !important;
+
+            .logo {
+                width: 15rem !important;
+            }
+
+            .search {
+                display: none !important;
+            }
+        }
+
+        .right-container {
+            a {
+                display: none !important;
+            }
+
+            .mobile-menu {
+                display: block !important;
+                width: 2rem !important;
+            }
+
+            img {
+                max-width: 2rem !important;
+            }
+
+            .profile-actions {
+                display: none !important;
+            }
+        }
+    }
+
+    // sidebar styles
+    .sidebar {
+        width: 0 !important;
+        min-width: 0 !important;
+    }
+    .slide-bar {
+        .show {
+            position: fixed !important;
+            right: 0 !important;
+            // pointer-events: none !important;
+            box-shadow: 0.3rem 0.5rem 2rem 0rem #0000000A;
+            background-color: var(--lendsqr-white) !important;
+            height: 100vh;
+            overflow-y: auto;
+        }
+    }
+
+    // user styles
+    .user-tabs {
+        overflow: auto;
+    }
+    .details-text-box {
+        h3 {
+            font-size: 2rem !important;
+        }
+
+        p {
+            font-size: 1rem !important;
+        }
+    }
+
+    // paginator styles
+    .lendsqr-paginator-div {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+    }
+
+}

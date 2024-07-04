@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private isLoggedIn = false;
+  private readonly isLoggedInKey = 'isLoggedIn';
+
+  constructor(private router: Router) { }
 
   login(email: string, password: string): boolean {
     const validEmail = 'test@lendsqr.com';
     const validPassword = 'password123';
 
     if (email === validEmail && password === validPassword) {
-      this.isLoggedIn = true;
+      localStorage.setItem(this.isLoggedInKey, 'true');
       return true;
     } else {
       return false;
@@ -20,10 +23,11 @@ export class AuthService {
   }
 
   logout() {
-    this.isLoggedIn = false;
+    localStorage.removeItem(this.isLoggedInKey);
+    this.router.navigate(['/auth/login']);
   }
 
   isAuthenticated(): boolean {
-    return this.isLoggedIn;
+    return localStorage.getItem(this.isLoggedInKey) === 'true';
   }
 }
